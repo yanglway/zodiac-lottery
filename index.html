@@ -25,12 +25,13 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
         
         header {
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
+            padding: 20px 0 10px;
+            margin-bottom: 15px;
             position: relative;
         }
         
@@ -38,9 +39,7 @@
             font-size: 2.8rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             margin-bottom: 10px;
-            background: rgba(0,0,0,0.2);
             padding: 15px;
-            border-radius: 15px;
             display: inline-block;
         }
         
@@ -48,26 +47,55 @@
             font-size: 1.2rem;
             opacity: 0.9;
             margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .announcement-bar {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+            position: relative;
+            height: 40px;
+        }
+        
+        .announcement-content {
+            position: absolute;
+            width: 100%;
+            white-space: nowrap;
+            animation: scrollAnnouncement 20s linear infinite;
+        }
+        
+        @keyframes scrollAnnouncement {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .announcement-content span {
+            font-weight: bold;
+            color: #FFD700;
+            margin-right: 30px;
         }
         
         .card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
+            padding: 25px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
         }
         
         .card-title {
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             text-align: center;
             color: #FFD700;
             text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
         
         .card-title::after {
@@ -90,15 +118,15 @@
         }
         
         .round-info {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             text-align: center;
         }
         
         .result-display {
-            font-size: 6rem;
+            font-size: 5rem;
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
-            margin: 25px 0;
+            margin: 20px 0;
             animation: glow 2s infinite alternate;
         }
         
@@ -109,7 +137,7 @@
         
         .countdown {
             background: rgba(0, 0, 0, 0.4);
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             text-align: center;
             margin-top: 20px;
@@ -118,30 +146,36 @@
         }
         
         .countdown-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             letter-spacing: 1px;
         }
         
         .countdown-timer {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: bold;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-family: 'Courier New', monospace;
             color: #4ade80;
+        }
+        
+        .time-info {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #ccc;
         }
         
         .zodiac-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 20px 0;
+            gap: 15px;
+            margin: 15px 0;
         }
         
         .zodiac-item {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 15px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             transition: all 0.4s;
             cursor: pointer;
@@ -150,36 +184,36 @@
         }
         
         .zodiac-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
         }
         
         .zodiac-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 10px;
             transition: transform 0.3s;
         }
         
         .zodiac-name {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
         }
         
         .zodiac-item.selected {
             background: linear-gradient(135deg, #28a745, #1e7e34);
-            box-shadow: 0 0 30px rgba(40, 167, 69, 0.7);
+            box-shadow: 0 0 25px rgba(40, 167, 69, 0.7);
             animation: pulse 1.5s infinite;
         }
         
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(40, 167, 69, 0); }
+            70% { box-shadow: 0 0 0 12px rgba(40, 167, 69, 0); }
             100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
         
         .history-list {
-            max-height: 400px;
+            max-height: 350px;
             overflow-y: auto;
             padding-right: 10px;
         }
@@ -200,9 +234,9 @@
         
         .history-item {
             background: rgba(255, 255, 255, 0.1);
-            padding: 18px;
+            padding: 15px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -210,18 +244,18 @@
         }
         
         .history-item:hover {
-            transform: translateX(10px);
+            transform: translateX(8px);
             background: rgba(255, 255, 255, 0.15);
         }
         
         .history-round {
             font-weight: bold;
-            font-size: 1.2rem;
-            min-width: 120px;
+            font-size: 1.1rem;
+            min-width: 100px;
         }
         
         .history-result {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             flex-grow: 1;
             text-align: center;
         }
@@ -230,21 +264,22 @@
             color: #ccc;
             min-width: 120px;
             text-align: right;
+            font-size: 0.9rem;
         }
         
         .customer-service {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 80px;
-            height: 80px;
+            bottom: 35px;
+            right: 35px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: linear-gradient(135deg, #dc3545, #a71e2c);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 28px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             z-index: 100;
@@ -254,7 +289,7 @@
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
             100% { transform: translateY(0px); }
         }
         
@@ -268,44 +303,222 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(0,0,0,0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
             z-index: 200;
         }
         
         .admin-btn {
-            background: transparent;
+            background: rgba(0,0,0,0.3);
             color: white;
-            border: 2px solid white;
-            padding: 8px 20px;
-            border-radius: 50px;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
             transition: all 0.3s;
         }
         
         .admin-btn:hover {
-            background: white;
-            color: #1a2a6c;
+            background: rgba(0,0,0,0.5);
+            transform: scale(1.1);
+        }
+        
+        .language-switcher {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 200;
+        }
+        
+        .lang-btn {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(0,0,0,0.5);
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #2c3e50, #1a2a6c);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .modal-title {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: #FFD700;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            background: rgba(255,255,255,0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        .btn-success {
+            background: #27ae60;
+        }
+        
+        .btn-success:hover {
+            background: #219653;
+        }
+        
+        .admin-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .admin-section h3 {
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .contact-info strong {
+            color: #FFD700;
+        }
+        
+        .zodiac-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .zodiac-option {
+            text-align: center;
+            padding: 12px 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .zodiac-option:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .zodiac-option.selected {
+            border-color: #27ae60;
+            background: rgba(39, 174, 96, 0.1);
         }
         
         @media (max-width: 768px) {
             .zodiac-container {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
+                gap: 12px;
             }
             
             .result-display {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
             
             .countdown-timer {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             h1 {
                 font-size: 2.2rem;
+            }
+            
+            .zodiac-selector {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
@@ -315,13 +528,13 @@
             }
             
             .result-display {
-                font-size: 3.5rem;
+                font-size: 3.2rem;
             }
             
             .history-item {
                 flex-direction: column;
                 text-align: center;
-                gap: 10px;
+                gap: 8px;
             }
             
             .history-round, .history-time {
@@ -333,37 +546,48 @@
 <body>
     <div class="admin-panel">
         <button class="admin-btn" id="adminBtn">
-            <i class="fas fa-cog"></i> 管理员设置
+            <i class="fas fa-search"></i>
         </button>
+    </div>
+    
+    <div class="language-switcher">
+        <button class="lang-btn" id="langBtn">မြန်မာ</button>
     </div>
     
     <div class="container">
         <header>
-            <h1>十二生肖开奖系统</h1>
-            <p class="subtitle">实时开奖 · 公平公正 · 精彩无限</p>
+            <h1 id="title">十二生肖开奖系统</h1>
+            <p class="subtitle" id="subtitle">仰光时间 · 每小时开奖 · 真实记录</p>
         </header>
         
+        <div class="announcement-bar">
+            <div class="announcement-content">
+                <span id="announcementText">公告：系统每小时自动开奖一次，管理员可预设开奖结果！</span>
+            </div>
+        </div>
+        
         <div class="card">
-            <h2 class="card-title">当前开奖结果</h2>
+            <h2 class="card-title" id="currentTitle">当前开奖结果</h2>
             <div class="current-result">
-                <div class="round-info">第 <span id="currentRound">1025</span> 期</div>
+                <div class="round-info" id="roundInfo">第 <span id="currentRound">1025</span> 期</div>
                 <div class="result-display" id="currentResult">🐲 龙</div>
                 <div class="countdown">
-                    <div class="countdown-title">下一期开奖倒计时</div>
-                    <div class="countdown-timer" id="countdownTimer">04:58:32</div>
+                    <div class="countdown-title" id="countdownTitle">下一期开奖倒计时</div>
+                    <div class="countdown-timer" id="countdownTimer">00:59:32</div>
+                    <div class="time-info" id="timeInfo">仰光时间: <span id="currentTime">00:00:00</span></div>
                 </div>
             </div>
         </div>
         
         <div class="card">
-            <h2 class="card-title">十二生肖</h2>
+            <h2 class="card-title" id="zodiacTitle">十二生肖</h2>
             <div class="zodiac-container" id="zodiacDisplay">
                 <!-- 生肖将通过JS动态加载 -->
             </div>
         </div>
         
         <div class="card">
-            <h2 class="card-title">历史开奖记录</h2>
+            <h2 class="card-title" id="historyTitle">历史开奖记录</h2>
             <div class="history-list" id="historyList">
                 <!-- 历史记录将通过JS动态加载 -->
             </div>
@@ -374,30 +598,220 @@
         <i class="fas fa-headset"></i>
     </div>
 
+    <!-- 管理员登录模态框 -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAdminModal">&times;</span>
+            <h2 class="modal-title" id="adminLoginTitle">管理员登录</h2>
+            <div class="form-group">
+                <label for="adminPassword" id="passwordLabel">请输入管理员密码</label>
+                <input type="password" id="adminPassword" class="form-control" placeholder="输入密码...">
+            </div>
+            <button class="btn" id="adminLoginBtn">登录</button>
+            <div id="adminLoginMessage" style="color: #ff6b6b; text-align: center; margin-top: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- 管理员面板模态框 -->
+    <div class="modal" id="adminPanelModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeAdminPanel">&times;</span>
+            <h2 class="modal-title" id="adminPanelTitle">管理员面板</h2>
+            
+            <div class="admin-section">
+                <h3 id="contactSettingTitle">设置联系方式</h3>
+                <div class="form-group">
+                    <label for="contactInfo" id="contactLabel">客户联系方式</label>
+                    <textarea id="contactInfo" class="form-control" placeholder="请输入客户联系方式..."></textarea>
+                </div>
+                <button class="btn" id="saveContactBtn" id="saveContactBtn">保存联系方式</button>
+            </div>
+            
+            <div class="admin-section">
+                <h3 id="announcementSettingTitle">设置公告内容</h3>
+                <div class="form-group">
+                    <label for="announcementSetting" id="announcementLabel">公告内容</label>
+                    <textarea id="announcementSetting" class="form-control" placeholder="请输入公告内容..."></textarea>
+                </div>
+                <button class="btn" id="saveAnnouncementBtn" id="saveAnnouncementBtn">保存公告</button>
+            </div>
+            
+            <div class="admin-section">
+                <h3 id="lotterySettingTitle">设置开奖结果</h3>
+                <p id="nextLotteryDesc">下一期开奖生肖：</p>
+                <div class="zodiac-selector" id="zodiacSelector">
+                    <!-- 生肖选项将通过JS动态加载 -->
+                </div>
+                <button class="btn btn-success" id="setLotteryBtn">设置开奖结果</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 客服联系模态框 -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeContactModal">&times;</span>
+            <h2 class="modal-title" id="contactTitle">客服联系方式</h2>
+            <div id="contactDisplay">
+                <div class="contact-info">
+                    <p id="contactDisplayText">请管理员设置联系方式</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // 十二生肖数据
         const zodiacs = [
-            {id: 1, name: '鼠', icon: '🐭'},
-            {id: 2, name: '牛', icon: '🐮'},
-            {id: 3, name: '虎', icon: '🐯'},
-            {id: 4, name: '兔', icon: '🐰'},
-            {id: 5, name: '龙', icon: '🐲'},
-            {id: 6, name: '蛇', icon: '🐍'},
-            {id: 7, name: '马', icon: '🐴'},
-            {id: 8, name: '羊', icon: '🐑'},
-            {id: 9, name: '猴', icon: '🐵'},
-            {id: 10, name: '鸡', icon: '🐔'},
-            {id: 11, name: '狗', icon: '🐶'},
-            {id: 12, name: '猪', icon: '🐷'}
+            {id: 1, name: '鼠', icon: '🐭', mmName: 'ကြွက်'},
+            {id: 2, name: '牛', icon: '🐮', mmName: 'နွား'},
+            {id: 3, name: '虎', icon: '🐯', mmName: 'ကျား'},
+            {id: 4, name: '兔', icon: '🐰', mmName: 'ယုန်'},
+            {id: 5, name: '龙', icon: '🐲', mmName: 'နဂါး'},
+            {id: 6, name: '蛇', icon: '🐍', mmName: 'မြွေ'},
+            {id: 7, name: '马', icon: '🐴', mmName: 'မြင်း'},
+            {id: 8, name: '羊', icon: '🐑', mmName: 'ဆိတ်'},
+            {id: 9, name: '猴', icon: '🐵', mmName: 'မျောက်'},
+            {id: 10, name: '鸡', icon: '🐔', mmName: 'ကြက်'},
+            {id: 11, name: '狗', icon: '🐶', mmName: 'ခွေး'},
+            {id: 12, name: '猪', icon: '🐷', mmName: 'ဝက်'}
         ];
+
+        // 多语言文本
+        const translations = {
+            cn: {
+                title: "十二生肖开奖系统",
+                subtitle: "仰光时间 · 每小时开奖 · 真实记录",
+                currentTitle: "当前开奖结果",
+                roundInfo: "第 {round} 期",
+                countdownTitle: "下一期开奖倒计时",
+                zodiacTitle: "十二生肖",
+                historyTitle: "历史开奖记录",
+                timeInfo: "仰光时间: ",
+                adminLoginTitle: "管理员登录",
+                passwordLabel: "请输入管理员密码",
+                adminPanelTitle: "管理员面板",
+                contactSettingTitle: "设置联系方式",
+                contactLabel: "客户联系方式",
+                saveContactBtn: "保存联系方式",
+                announcementSettingTitle: "设置公告内容",
+                announcementLabel: "公告内容",
+                saveAnnouncementBtn: "保存公告",
+                lotterySettingTitle: "设置开奖结果",
+                nextLotteryDesc: "下一期开奖生肖：",
+                setLotteryBtn: "设置开奖结果",
+                contactTitle: "客服联系方式",
+                contactDefault: "请管理员设置联系方式",
+                announcementDefault: "公告：系统每小时自动开奖一次，管理员可预设开奖结果！",
+                adminLoginMessage: "密码错误，请重新输入！",
+                lotterySetSuccess: "开奖结果已设置！将在下一期开奖时生效。",
+                contactSetSuccess: "联系方式已更新！",
+                announcementSetSuccess: "公告已更新！",
+                language: "မြန်မာ"
+            },
+            mm: {
+                title: "တရုတ်ရာသီခွင်ထီထုတ်ပွဲစနစ်",
+                subtitle: "ရန်ကုန်အချိန် · တစ်နာရီတစ်ကြိမ်ထီထုတ် · အစစ်အမှန်မှတ်တမ်း",
+                currentTitle: "လက်ရှိထီထွက်ရလဒ်",
+                roundInfo: "အပတ်စဉ် {round}",
+                countdownTitle: "နောက်တစ်ကြိမ်ထီထုတ်ရန်အချိန်ရေတွက်",
+                zodiacTitle: "တရုတ်ရာသီခွင် ၁၂ ကောင်",
+                historyTitle: "ထီထွက်ရလဒ်မှတ်တမ်း",
+                timeInfo: "ရန်ကုန်အချိန်: ",
+                adminLoginTitle: "အက်ဒမင်လော့ဂ်အင်ဝင်ရန်",
+                passwordLabel: "အက်ဒမင်စကားဝှက်ထည့်ပါ",
+                adminPanelTitle: "အက်ဒမင်ထိန်းချုပ်ရာနေရာ",
+                contactSettingTitle: "ဆက်သွယ်ရန်နည်းလမ်းများသတ်မှတ်ခြင်း",
+                contactLabel: "ဖောက်သည်ဆက်သွယ်ရန်နည်းလမ်းများ",
+                saveContactBtn: "ဆက်သွယ်ရန်နည်းလမ်းများသိမ်းဆည်းပါ",
+                announcementSettingTitle: "ကြေညာချက်သတ်မှတ်ခြင်း",
+                announcementLabel: "ကြေညာချက်အကြောင်းအရာ",
+                saveAnnouncementBtn: "ကြေညာချက်သိမ်းဆည်းပါ",
+                lotterySettingTitle: "ထီထွက်ရလဒ်သတ်မှတ်ခြင်း",
+                nextLotteryDesc: "နောက်တစ်ကြိမ်ထီထွက်မည့်ရာသီခွင်:",
+                setLotteryBtn: "ထီထွက်ရလဒ်သတ်မှတ်ပါ",
+                contactTitle: "ဖောက်သည်ဝန်ဆောင်မှုဆက်သွယ်ရန်",
+                contactDefault: "အက်ဒမင်မှဆက်သွယ်ရန်နည်းလမ်းများသတ်မှတ်ပေးပါ",
+                announcementDefault: "ကြေညာချက် - စနစ်သည်တစ်နာရီတစ်ကြိမ်အလိုအလျောက်ထီထုတ်ပေးပြီး အက်ဒမင်မှကြိုတင်သတ်မှတ်နိုင်ပါသည်။",
+                adminLoginMessage: "စကားဝှက်မှားယွင်းနေပါသည်။ ပြန်လည်ထည့်သွင်းပါ။",
+                lotterySetSuccess: "ထီထွက်ရလဒ်သတ်မှတ်ပြီးပါပြီ။ နောက်တစ်ကြိမ်ထီထုတ်မှုတွင်အကျိုးသက်ရောက်မည်။",
+                contactSetSuccess: "ဆက်သွယ်ရန်နည်းလမ်းများအပ်ဒိတ်လုပ်ပြီးပါပြီ။",
+                announcementSetSuccess: "ကြေညာချက်အပ်ဒိတ်လုပ်ပြီးပါပြီ။",
+                language: "中文"
+            }
+        };
+
+        // 当前语言
+        let currentLanguage = 'cn';
 
         // 初始化函数
         function init() {
+            // 从本地存储加载数据或初始化
+            loadLotteryData();
             renderZodiacs();
             setupCustomerService();
-            setupAdminPanel();
-            generateHistory();
+            setupAdminFunctions();
+            setupLanguageSwitcher();
+            updateClock();
+            setInterval(updateClock, 1000);
             startCountdown();
+        }
+
+        // 加载开奖数据
+        function loadLotteryData() {
+            // 从本地存储加载或初始化
+            let lotteryData = localStorage.getItem('zodiacLotteryData');
+            if (!lotteryData) {
+                // 初始数据
+                const initialData = {
+                    currentRound: 1025,
+                    currentResult: 5, // 龙
+                    nextResult: null, // 预设的下一期结果
+                    lastDrawTime: Date.now() - 60 * 1000, // 1分钟前
+                    history: [],
+                    contactInfo: translations.cn.contactDefault,
+                    announcement: translations.cn.announcementDefault
+                };
+                
+                // 添加一些历史记录
+                for (let i = 0; i < 10; i++) {
+                    initialData.history.push({
+                        round: 1024 - i,
+                        result: Math.floor(Math.random() * 12) + 1,
+                        time: Date.now() - (i * 60 * 60 * 1000) // 小时为单位
+                    });
+                }
+                
+                localStorage.setItem('zodiacLotteryData', JSON.stringify(initialData));
+                lotteryData = initialData;
+            } else {
+                lotteryData = JSON.parse(lotteryData);
+            }
+            
+            // 更新UI
+            updateUI(lotteryData);
+            return lotteryData;
+        }
+
+        // 更新UI显示
+        function updateUI(data) {
+            document.getElementById('currentRound').textContent = data.currentRound;
+            
+            const currentResult = zodiacs[data.currentResult - 1];
+            const resultText = currentLanguage === 'cn' ? 
+                `${currentResult.icon} ${currentResult.name}` : 
+                `${currentResult.icon} ${currentResult.mmName}`;
+                
+            document.getElementById('currentResult').textContent = resultText;
+            
+            // 更新历史记录
+            renderHistory(data.history);
+            
+            // 更新公告
+            document.getElementById('announcementText').textContent = data.announcement;
+            
+            // 更新联系方式显示
+            document.getElementById('contactDisplayText').textContent = data.contactInfo;
         }
 
         // 渲染生肖显示
@@ -408,91 +822,306 @@
             zodiacs.forEach(zodiac => {
                 const zodiacItem = document.createElement('div');
                 zodiacItem.className = 'zodiac-item';
+                
+                const nameText = currentLanguage === 'cn' ? 
+                    zodiac.name : zodiac.mmName;
+                
                 zodiacItem.innerHTML = `
                     <div class="zodiac-icon">${zodiac.icon}</div>
-                    <div class="zodiac-name">${zodiac.name}</div>
+                    <div class="zodiac-name">${nameText}</div>
                 `;
                 zodiacDisplay.appendChild(zodiacItem);
             });
-            
-            // 默认选择龙（示例）
-            document.querySelectorAll('.zodiac-item')[4].classList.add('selected');
         }
 
-        // 设置客服按钮
-        function setupCustomerService() {
-            const customerServiceBtn = document.getElementById('customerServiceBtn');
+        // 渲染管理员生肖选择器
+        function renderZodiacSelector() {
+            const selector = document.getElementById('zodiacSelector');
+            selector.innerHTML = '';
             
-            customerServiceBtn.addEventListener('click', function() {
-                alert('客服功能：\n\n请通过以下方式联系我们：\n电话：400-123-4567\n邮箱：support@zodiac.com\n在线时间：9:00-21:00');
+            zodiacs.forEach(zodiac => {
+                const nameText = currentLanguage === 'cn' ? 
+                    zodiac.name : zodiac.mmName;
+                
+                const option = document.createElement('div');
+                option.className = 'zodiac-option';
+                option.dataset.id = zodiac.id;
+                option.innerHTML = `
+                    <div>${zodiac.icon}</div>
+                    <div>${nameText}</div>
+                `;
+                selector.appendChild(option);
+            });
+            
+            // 设置选择事件
+            document.querySelectorAll('.zodiac-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.zodiac-option').forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
             });
         }
 
-        // 设置管理员按钮
-        function setupAdminPanel() {
-            const adminBtn = document.getElementById('adminBtn');
-            
-            adminBtn.addEventListener('click', function() {
-                alert('管理员功能：\n\n1. 设置开奖结果\n2. 调整开奖时间\n3. 查看历史记录\n\n提示：完整版系统支持后台管理功能');
-            });
-        }
-
-        // 生成历史记录
-        function generateHistory() {
+        // 渲染历史记录
+        function renderHistory(history) {
             const historyList = document.getElementById('historyList');
             historyList.innerHTML = '';
             
-            for (let i = 0; i < 10; i++) {
-                const round = 1024 - i;
-                const result = zodiacs[Math.floor(Math.random() * zodiacs.length)];
-                const time = new Date(Date.now() - i * 5 * 60 * 1000);
+            // 按时间排序（最近的在前）
+            history.sort((a, b) => b.time - a.time);
+            
+            history.forEach(item => {
+                const result = zodiacs[item.result - 1];
+                const time = new Date(item.time);
                 const timeStr = `${time.getFullYear()}-${(time.getMonth()+1).toString().padStart(2, '0')}-${time.getDate().toString().padStart(2, '0')} ${time.getHours().toString().padStart(2, '0')}:${time.getMinutes().toString().padStart(2, '0')}`;
+                
+                const resultText = currentLanguage === 'cn' ? 
+                    `${result.icon} ${result.name}` : 
+                    `${result.icon} ${result.mmName}`;
                 
                 const historyItem = document.createElement('div');
                 historyItem.className = 'history-item';
                 historyItem.innerHTML = `
-                    <div class="history-round">第 ${round} 期</div>
-                    <div class="history-result">${result.icon} ${result.name}</div>
+                    <div class="history-round">${translations[currentLanguage].roundInfo.replace('{round}', item.round)}</div>
+                    <div class="history-result">${resultText}</div>
                     <div class="history-time">${timeStr}</div>
                 `;
                 historyList.appendChild(historyItem);
-            }
+            });
+        }
+
+        // 设置客服功能
+        function setupCustomerService() {
+            const customerServiceBtn = document.getElementById('customerServiceBtn');
+            
+            customerServiceBtn.addEventListener('click', function() {
+                document.getElementById('contactModal').style.display = 'flex';
+            });
+        }
+
+        // 设置管理员功能
+        function setupAdminFunctions() {
+            const adminBtn = document.getElementById('adminBtn');
+            const adminModal = document.getElementById('adminModal');
+            const closeAdminModal = document.getElementById('closeAdminModal');
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            const closeAdminPanel = document.getElementById('closeAdminPanel');
+            
+            // 打开管理员登录模态框
+            adminBtn.addEventListener('click', function() {
+                adminModal.style.display = 'flex';
+                document.getElementById('adminPassword').focus();
+            });
+            
+            // 关闭管理员登录模态框
+            closeAdminModal.addEventListener('click', function() {
+                adminModal.style.display = 'none';
+            });
+            
+            // 登录按钮事件
+            adminLoginBtn.addEventListener('click', function() {
+                const password = document.getElementById('adminPassword').value;
+                const messageElement = document.getElementById('adminLoginMessage');
+                
+                if (password === 'aa7788') {
+                    adminModal.style.display = 'none';
+                    document.getElementById('adminPanelModal').style.display = 'flex';
+                    
+                    // 渲染管理员面板内容
+                    renderZodiacSelector();
+                    
+                    // 加载保存的数据
+                    const data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+                    document.getElementById('contactInfo').value = data.contactInfo;
+                    document.getElementById('announcementSetting').value = data.announcement;
+                    
+                    // 清除密码
+                    document.getElementById('adminPassword').value = '';
+                    messageElement.textContent = '';
+                } else {
+                    messageElement.textContent = translations[currentLanguage].adminLoginMessage;
+                }
+            });
+            
+            // 关闭管理员面板
+            closeAdminPanel.addEventListener('click', function() {
+                document.getElementById('adminPanelModal').style.display = 'none';
+            });
+            
+            // 设置开奖按钮事件
+            document.getElementById('setLotteryBtn').addEventListener('click', function() {
+                const selectedOption = document.querySelector('.zodiac-option.selected');
+                
+                if (!selectedOption) {
+                    alert(currentLanguage === 'cn' ? '请先选择一个生肖！' : 'ကျေးဇူးပြု၍ ရာသီခွင်တစ်ခုကိုရွေးချယ်ပါ။');
+                    return;
+                }
+                
+                const zodiacId = parseInt(selectedOption.dataset.id);
+                setNextLottery(zodiacId);
+            });
+            
+            // 保存联系方式
+            document.getElementById('saveContactBtn').addEventListener('click', function() {
+                const contactInfo = document.getElementById('contactInfo').value.trim();
+                if (!contactInfo) return;
+                
+                let data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+                data.contactInfo = contactInfo;
+                localStorage.setItem('zodiacLotteryData', JSON.stringify(data));
+                
+                document.getElementById('contactDisplayText').textContent = contactInfo;
+                alert(translations[currentLanguage].contactSetSuccess);
+            });
+            
+            // 保存公告
+            document.getElementById('saveAnnouncementBtn').addEventListener('click', function() {
+                const announcement = document.getElementById('announcementSetting').value.trim();
+                if (!announcement) return;
+                
+                let data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+                data.announcement = announcement;
+                localStorage.setItem('zodiacLotteryData', JSON.stringify(data));
+                
+                document.getElementById('announcementText').textContent = announcement;
+                alert(translations[currentLanguage].announcementSetSuccess);
+            });
+        }
+        
+        // 设置语言切换
+        function setupLanguageSwitcher() {
+            const langBtn = document.getElementById('langBtn');
+            
+            langBtn.addEventListener('click', function() {
+                currentLanguage = currentLanguage === 'cn' ? 'mm' : 'cn';
+                applyLanguage();
+            });
+        }
+        
+        // 应用当前语言
+        function applyLanguage() {
+            const lang = translations[currentLanguage];
+            
+            // 更新界面文本
+            document.getElementById('title').textContent = lang.title;
+            document.getElementById('subtitle').textContent = lang.subtitle;
+            document.getElementById('currentTitle').textContent = lang.currentTitle;
+            document.getElementById('zodiacTitle').textContent = lang.zodiacTitle;
+            document.getElementById('historyTitle').textContent = lang.historyTitle;
+            document.getElementById('countdownTitle').textContent = lang.countdownTitle;
+            document.getElementById('timeInfo').textContent = lang.timeInfo;
+            document.getElementById('adminLoginTitle').textContent = lang.adminLoginTitle;
+            document.getElementById('passwordLabel').textContent = lang.passwordLabel;
+            document.getElementById('adminPanelTitle').textContent = lang.adminPanelTitle;
+            document.getElementById('contactSettingTitle').textContent = lang.contactSettingTitle;
+            document.getElementById('contactLabel').textContent = lang.contactLabel;
+            document.getElementById('saveContactBtn').textContent = lang.saveContactBtn;
+            document.getElementById('announcementSettingTitle').textContent = lang.announcementSettingTitle;
+            document.getElementById('announcementLabel').textContent = lang.announcementLabel;
+            document.getElementById('saveAnnouncementBtn').textContent = lang.saveAnnouncementBtn;
+            document.getElementById('lotterySettingTitle').textContent = lang.lotterySettingTitle;
+            document.getElementById('nextLotteryDesc').textContent = lang.nextLotteryDesc;
+            document.getElementById('setLotteryBtn').textContent = lang.setLotteryBtn;
+            document.getElementById('contactTitle').textContent = lang.contactTitle;
+            document.getElementById('langBtn').textContent = lang.language;
+            
+            // 重新渲染生肖和历史记录
+            renderZodiacs();
+            const data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+            updateUI(data);
+            
+            // 更新轮次信息
+            document.getElementById('roundInfo').textContent = 
+                lang.roundInfo.replace('{round}', document.getElementById('currentRound').textContent);
+        }
+
+        // 设置下一期开奖结果
+        function setNextLottery(zodiacId) {
+            let data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+            data.nextResult = zodiacId;
+            localStorage.setItem('zodiacLotteryData', JSON.stringify(data));
+            
+            alert(translations[currentLanguage].lotterySetSuccess);
+            
+            // 重置选择
+            document.querySelectorAll('.zodiac-option').forEach(el => {
+                el.classList.remove('selected');
+            });
         }
 
         // 倒计时功能
         function startCountdown() {
-            const endTime = new Date(Date.now() + 5 * 60 * 1000); // 5分钟后
-            
             function update() {
                 const now = new Date();
-                const diff = endTime - now;
+                // 仰光时间 UTC+6:30
+                const yangonOffset = 6.5 * 60 * 60 * 1000;
+                const yangonTime = new Date(now.getTime() + yangonOffset);
                 
-                if (diff <= 0) {
-                    // 模拟新开奖
-                    const newResult = zodiacs[Math.floor(Math.random() * zodiacs.length)];
-                    document.getElementById('currentResult').textContent = `${newResult.icon} ${newResult.name}`;
-                    document.getElementById('currentRound').textContent = parseInt(document.getElementById('currentRound').textContent) + 1;
-                    
-                    // 更新选择
-                    document.querySelectorAll('.zodiac-item').forEach(item => item.classList.remove('selected'));
-                    document.querySelectorAll('.zodiac-item')[newResult.id-1].classList.add('selected');
-                    
-                    // 添加新历史记录
-                    generateHistory();
-                    
-                    // 重置倒计时
-                    endTime.setTime(now.getTime() + 5 * 60 * 1000);
-                }
+                // 计算下一个整点时间
+                const nextHour = new Date(yangonTime);
+                nextHour.setMinutes(0, 0, 0);
+                nextHour.setHours(nextHour.getHours() + 1);
+                
+                const diff = nextHour - yangonTime;
                 
                 const hours = Math.floor(diff / (1000 * 60 * 60)).toString().padStart(2, '0');
                 const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
                 const secs = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
                 
                 document.getElementById('countdownTimer').textContent = `${hours}:${mins}:${secs}`;
+                
+                // 如果倒计时结束，执行开奖
+                if (diff <= 0) {
+                    performLottery();
+                }
             }
             
             update();
             setInterval(update, 1000);
+        }
+        
+        // 更新仰光时间
+        function updateClock() {
+            const now = new Date();
+            // 仰光时间 UTC+6:30
+            const yangonOffset = 6.5 * 60 * 60 * 1000;
+            const yangonTime = new Date(now.getTime() + yangonOffset);
+            
+            const hours = yangonTime.getUTCHours().toString().padStart(2, '0');
+            const mins = yangonTime.getUTCMinutes().toString().padStart(2, '0');
+            const secs = yangonTime.getUTCSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('currentTime').textContent = `${hours}:${mins}:${secs}`;
+        }
+        
+        // 执行开奖
+        function performLottery() {
+            let data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
+            
+            // 如果有预设结果则使用，否则随机
+            const result = data.nextResult !== null ? 
+                data.nextResult : Math.floor(Math.random() * 12) + 1;
+            
+            // 更新数据
+            data.currentRound += 1;
+            data.currentResult = result;
+            data.nextResult = null; // 清除预设
+            data.lastDrawTime = Date.now();
+            
+            // 添加历史记录
+            data.history.push({
+                round: data.currentRound,
+                result: result,
+                time: data.lastDrawTime
+            });
+            
+            // 保存到本地存储
+            localStorage.setItem('zodiacLotteryData', JSON.stringify(data));
+            
+            // 更新UI
+            updateUI(data);
         }
 
         // 页面加载完成后初始化
