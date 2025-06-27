@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>十二生肖开奖系统</title>
+    <title>十二生肖</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -317,7 +317,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s;
         }
         
@@ -370,6 +370,8 @@
             max-width: 500px;
             box-shadow: 0 15px 50px rgba(0,0,0,0.5);
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         
         .close-modal {
@@ -379,6 +381,7 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
+            z-index: 10;
         }
         
         .modal-title {
@@ -499,6 +502,21 @@
             background: rgba(39, 174, 96, 0.1);
         }
         
+        .password-strength {
+            height: 5px;
+            background: #555;
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            background: #4ade80;
+            transition: width 0.3s;
+        }
+        
         @media (max-width: 768px) {
             .zodiac-container {
                 grid-template-columns: repeat(3, 1fr);
@@ -520,6 +538,29 @@
             .zodiac-selector {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .admin-section {
+                padding: 15px;
+            }
+            
+            .zodiac-selector {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .zodiac-option {
+                padding: 10px 5px;
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .modal-content {
+                padding: 20px 15px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -540,6 +581,44 @@
             .history-round, .history-time {
                 min-width: auto;
             }
+            
+            .modal-content {
+                padding: 15px 10px;
+            }
+            
+            .admin-section {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+            
+            .zodiac-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-group label {
+                font-size: 0.95rem;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .admin-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -556,7 +635,7 @@
     
     <div class="container">
         <header>
-            <h1 id="title">十二生肖开奖系统</h1>
+            <h1 id="title">十二生肖</h1>
             <p class="subtitle" id="subtitle">仰光时间 · 每小时开奖 · 真实记录</p>
         </header>
         
@@ -618,13 +697,35 @@
             <span class="close-modal" id="closeAdminPanel">&times;</span>
             <h2 class="modal-title" id="adminPanelTitle">管理员面板</h2>
             
+            <!-- 新增：修改密码区域 -->
+            <div class="admin-section">
+                <h3 id="changePasswordTitle">修改登录密码</h3>
+                <div class="form-group">
+                    <label for="oldPassword" id="oldPasswordLabel">当前密码</label>
+                    <input type="password" id="oldPassword" class="form-control" placeholder="输入当前密码">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword" id="newPasswordLabel">新密码</label>
+                    <input type="password" id="newPassword" class="form-control" placeholder="输入新密码">
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword" id="confirmPasswordLabel">确认新密码</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="再次输入新密码">
+                </div>
+                <button class="btn" id="changePasswordBtn">修改密码</button>
+                <div id="passwordChangeMessage" style="color: #ff6b6b; text-align: center; margin-top: 15px;"></div>
+            </div>
+            
             <div class="admin-section">
                 <h3 id="contactSettingTitle">设置联系方式</h3>
                 <div class="form-group">
                     <label for="contactInfo" id="contactLabel">客户联系方式</label>
                     <textarea id="contactInfo" class="form-control" placeholder="请输入客户联系方式..."></textarea>
                 </div>
-                <button class="btn" id="saveContactBtn" id="saveContactBtn">保存联系方式</button>
+                <button class="btn" id="saveContactBtn">保存联系方式</button>
             </div>
             
             <div class="admin-section">
@@ -633,7 +734,7 @@
                     <label for="announcementSetting" id="announcementLabel">公告内容</label>
                     <textarea id="announcementSetting" class="form-control" placeholder="请输入公告内容..."></textarea>
                 </div>
-                <button class="btn" id="saveAnnouncementBtn" id="saveAnnouncementBtn">保存公告</button>
+                <button class="btn" id="saveAnnouncementBtn">保存公告</button>
             </div>
             
             <div class="admin-section">
@@ -680,7 +781,7 @@
         // 多语言文本
         const translations = {
             cn: {
-                title: "十二生肖开奖系统",
+                title: "十二生肖",
                 subtitle: "仰光时间 · 每小时开奖 · 真实记录",
                 currentTitle: "当前开奖结果",
                 roundInfo: "第 {round} 期",
@@ -707,7 +808,17 @@
                 lotterySetSuccess: "开奖结果已设置！将在下一期开奖时生效。",
                 contactSetSuccess: "联系方式已更新！",
                 announcementSetSuccess: "公告已更新！",
-                language: "မြန်မာ"
+                language: "မြန်မာ",
+                // 新增密码相关文本
+                changePasswordTitle: "修改登录密码",
+                oldPasswordLabel: "当前密码",
+                newPasswordLabel: "新密码",
+                confirmPasswordLabel: "确认新密码",
+                passwordChangeBtn: "修改密码",
+                passwordChangeSuccess: "密码修改成功！",
+                passwordMismatch: "两次输入的密码不一致！",
+                passwordWeak: "密码太弱，至少需要6个字符！",
+                passwordIncorrect: "当前密码不正确！"
             },
             mm: {
                 title: "တရုတ်ရာသီခွင်ထီထုတ်ပွဲစနစ်",
@@ -737,12 +848,24 @@
                 lotterySetSuccess: "ထီထွက်ရလဒ်သတ်မှတ်ပြီးပါပြီ။ နောက်တစ်ကြိမ်ထီထုတ်မှုတွင်အကျိုးသက်ရောက်မည်။",
                 contactSetSuccess: "ဆက်သွယ်ရန်နည်းလမ်းများအပ်ဒိတ်လုပ်ပြီးပါပြီ။",
                 announcementSetSuccess: "ကြေညာချက်အပ်ဒိတ်လုပ်ပြီးပါပြီ။",
-                language: "中文"
+                language: "中文",
+                // 新增密码相关文本
+                changePasswordTitle: "လော့ဂ်အင်စကားဝှက်ပြောင်းလဲရန်",
+                oldPasswordLabel: "လက်ရှိစကားဝှက်",
+                newPasswordLabel: "စကားဝှက်အသစ်",
+                confirmPasswordLabel: "စကားဝှက်အသစ်အတည်ပြုပါ",
+                passwordChangeBtn: "စကားဝှက်ပြောင်းလဲရန်",
+                passwordChangeSuccess: "စကားဝှက်ပြောင်းလဲမှုအောင်မြင်ပါသည်။",
+                passwordMismatch: "စကားဝှက်နှစ်ခုမကိုက်ညီပါ။",
+                passwordWeak: "စကားဝှက်အားနည်းနေပါသည်။ အနည်းဆုံးစာလုံးခြောက်လုံးရှိရပါမည်။",
+                passwordIncorrect: "လက်ရှိစကားဝှက်မမှန်ပါ။"
             }
         };
 
         // 当前语言
         let currentLanguage = 'cn';
+        // 管理员密码
+        let adminPassword = "aa7788";
 
         // 初始化函数
         function init() {
@@ -755,6 +878,31 @@
             updateClock();
             setInterval(updateClock, 1000);
             startCountdown();
+            
+            // 添加客服模态框关闭事件
+            document.getElementById('closeContactModal').addEventListener('click', function() {
+                document.getElementById('contactModal').style.display = 'none';
+            });
+            
+            // 密码强度检测
+            document.getElementById('newPassword').addEventListener('input', function() {
+                updatePasswordStrength(this.value);
+            });
+        }
+
+        // 更新密码强度显示
+        function updatePasswordStrength(password) {
+            const strengthBar = document.getElementById('passwordStrengthBar');
+            const strength = Math.min(100, Math.max(0, password.length * 15));
+            strengthBar.style.width = strength + '%';
+            
+            if (password.length >= 8) {
+                strengthBar.style.background = '#27ae60';
+            } else if (password.length >= 6) {
+                strengthBar.style.background = '#f1c40f';
+            } else {
+                strengthBar.style.background = '#e74c3c';
+            }
         }
 
         // 加载开奖数据
@@ -807,7 +955,7 @@
             // 更新历史记录
             renderHistory(data.history);
             
-            // 更新公告
+            // 确保公告内容使用管理员设置的公告
             document.getElementById('announcementText').textContent = data.announcement;
             
             // 更新联系方式显示
@@ -899,6 +1047,11 @@
             customerServiceBtn.addEventListener('click', function() {
                 document.getElementById('contactModal').style.display = 'flex';
             });
+            
+            // 添加客服模态框关闭事件
+            document.getElementById('closeContactModal').addEventListener('click', function() {
+                document.getElementById('contactModal').style.display = 'none';
+            });
         }
 
         // 设置管理员功能
@@ -925,7 +1078,7 @@
                 const password = document.getElementById('adminPassword').value;
                 const messageElement = document.getElementById('adminLoginMessage');
                 
-                if (password === 'aa7788') {
+                if (password === adminPassword) {
                     adminModal.style.display = 'none';
                     document.getElementById('adminPanelModal').style.display = 'flex';
                     
@@ -988,6 +1141,46 @@
                 document.getElementById('announcementText').textContent = announcement;
                 alert(translations[currentLanguage].announcementSetSuccess);
             });
+            
+            // 修改密码功能
+            document.getElementById('changePasswordBtn').addEventListener('click', function() {
+                const oldPassword = document.getElementById('oldPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const messageElement = document.getElementById('passwordChangeMessage');
+                
+                // 验证输入
+                if (oldPassword !== adminPassword) {
+                    messageElement.textContent = translations[currentLanguage].passwordIncorrect;
+                    return;
+                }
+                
+                if (newPassword.length < 6) {
+                    messageElement.textContent = translations[currentLanguage].passwordWeak;
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    messageElement.textContent = translations[currentLanguage].passwordMismatch;
+                    return;
+                }
+                
+                // 更新密码
+                adminPassword = newPassword;
+                messageElement.textContent = translations[currentLanguage].passwordChangeSuccess;
+                messageElement.style.color = '#4ade80';
+                
+                // 清空表单
+                document.getElementById('oldPassword').value = '';
+                document.getElementById('newPassword').value = '';
+                document.getElementById('confirmPassword').value = '';
+                document.getElementById('passwordStrengthBar').style.width = '0%';
+                
+                // 3秒后清除消息
+                setTimeout(() => {
+                    messageElement.textContent = '';
+                }, 3000);
+            });
         }
         
         // 设置语言切换
@@ -1004,7 +1197,7 @@
         function applyLanguage() {
             const lang = translations[currentLanguage];
             
-            // 更新界面文本
+            // 更新所有界面文本
             document.getElementById('title').textContent = lang.title;
             document.getElementById('subtitle').textContent = lang.subtitle;
             document.getElementById('currentTitle').textContent = lang.currentTitle;
@@ -1027,14 +1220,39 @@
             document.getElementById('contactTitle').textContent = lang.contactTitle;
             document.getElementById('langBtn').textContent = lang.language;
             
-            // 重新渲染生肖和历史记录
-            renderZodiacs();
+            // 新增密码修改区域文本
+            document.getElementById('changePasswordTitle').textContent = lang.changePasswordTitle;
+            document.getElementById('oldPasswordLabel').textContent = lang.oldPasswordLabel;
+            document.getElementById('newPasswordLabel').textContent = lang.newPasswordLabel;
+            document.getElementById('confirmPasswordLabel').textContent = lang.confirmPasswordLabel;
+            document.getElementById('changePasswordBtn').textContent = lang.passwordChangeBtn;
+            
+            // 重新渲染所有动态内容
             const data = JSON.parse(localStorage.getItem('zodiacLotteryData'));
-            updateUI(data);
+            
+            // 重新渲染生肖
+            renderZodiacs();
+            
+            // 重新渲染历史记录
+            renderHistory(data.history);
             
             // 更新轮次信息
             document.getElementById('roundInfo').textContent = 
                 lang.roundInfo.replace('{round}', document.getElementById('currentRound').textContent);
+            
+            // 更新当前开奖结果
+            const currentResult = zodiacs[data.currentResult - 1];
+            const resultText = currentLanguage === 'cn' ? 
+                `${currentResult.icon} ${currentResult.name}` : 
+                `${currentResult.icon} ${currentResult.mmName}`;
+                
+            document.getElementById('currentResult').textContent = resultText;
+            
+            // 更新公告
+            document.getElementById('announcementText').textContent = data.announcement;
+            
+            // 更新联系方式
+            document.getElementById('contactDisplayText').textContent = data.contactInfo;
         }
 
         // 设置下一期开奖结果
